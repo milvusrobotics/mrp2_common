@@ -1,0 +1,10 @@
+<launch>
+  <arg name="config" default="base" />
+  <arg name="robot" default="full" />
+
+  <param name="robot_description"
+         command="$(find mrp2_description)/scripts/env_run
+                    $(find mrp2_description)/urdf/configs/$(arg config)
+                    $(find xacro)/xacro.py '$(find mrp2_description)/urdf/mrp2_$(arg robot).urdf.xacro'" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+</launch>

@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+
+<!--
+  Copyright (c) 2014, PAL Robotics, S.L.
+  All rights reserved.
+
+  This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License.
+  To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/3.0/ or send a letter to
+  Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+-->
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find mrp2_description)/urdf/wheels/caster.transmission.xacro"/>
+  <xacro:include filename="$(find mrp2_description)/urdf/wheels/caster.gazebo.xacro"/>
+
+  <xacro:macro name="caster" params="side radius width position_x position_y position_z offset_x offset_y offset_z parent">
+
+    <link name="caster_${side}_2_link">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.03677"/>
+        <inertia  ixx="0.0001" ixy="0" ixz="0"
+                  iyy="0.0001" iyz="0"
+                  izz="0.00001"/>
+        </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://mrp2_description/meshes/caster_base.stl"/>
+        </geometry>
+        <material name="Grey"/>
+      </visual>
+    </link>
+
+    <joint name="caster_${side}_2_joint" type="fixed">
+      <parent link="${parent}_link"/>
+      <child link="caster_${side}_2_link"/>
+      <origin xyz="${position_x} ${position_y} ${position_z}" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="caster_${side}_wheel_link">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.06677"/>
+        <inertia  ixx="0.00001" ixy="0" ixz="0"
+                  iyy="0.0001" iyz="0"
+                  izz="0.00001"/>
+        </inertial>
+      <visual>
+        <origin xyz="0.0375 -0.0125 -0.0375" rpy="0 0 1.57079"/>
+        <geometry>
+          <mesh filename="package://mrp2_description/meshes/caster_roller.stl"/>
+        </geometry>
+        <material name="Grey"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <sphere radius="${radius}"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="caster_${side}_wheel_joint" type="fixed">
+      <parent link="caster_${side}_2_link"/>
+      <child link="caster_${side}_wheel_link"/>
+      <origin xyz="-0.03 0 -0.0596" rpy="0 0 0"/>
+      <axis xyz="0 1 0"/>
+    </joint>
+
+    <!-- Transmission 132.1 mm-->
+    <!--xacro:caster_transmission name="" side="${side}" number="" reduction=""-->
+
+    <!-- Gazebo extensions -->
+    <!--<xacro:caster_gazebo side="${side}"/>-->
+    <xacro:caster_gazebo side="${side}"/>
+  </xacro:macro>
+</robot>

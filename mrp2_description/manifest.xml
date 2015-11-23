@@ -1,0 +1,6 @@
+<package>
+  <description brief="mrp2">mrp2</description>
+  <depend package="gazebo" />
+  <author>me</author>
+  <license>BSD</license>
+</package>

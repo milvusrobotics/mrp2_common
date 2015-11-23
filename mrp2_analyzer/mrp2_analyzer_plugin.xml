@@ -1,0 +1,7 @@
+<library path="lib/libmrp2_analyzer" >
+  <class name="MRP2Analyzer" type="diagnostic_aggregator::MRP2Analyzer" base_class_type="diagnostic_aggregator::Analyzer">
+    <description>
+      MRP2Analyzer is tutorial for writing diagnostic analyzers.
+    </description>
+  </class>
+</library>

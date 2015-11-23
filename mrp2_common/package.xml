@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package>
+  <name>mrp2_common</name>
+  <version>0.1.0</version>
+  <description>MRP2 robot description and launch files</description>
+  <maintainer email="info@pal-robotics.com">PAL Robotics</maintainer>
+  <license>BSD</license>
+  <author email="enrique.fernandez@pal-robotics.com">Enrique Fernandez</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <run_depend>mrp2_description</run_depend>
+
+  <export>
+    <metapackage/>
+  </export>
+</package>

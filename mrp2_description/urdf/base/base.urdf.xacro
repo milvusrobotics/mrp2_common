@@ -1,0 +1,187 @@
+<?xml version="1.0"?>
+<!--
+
+  Copyright (c) 2011-2014, PAL Robotics, S.L.
+  All rights reserved.
+
+  This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License.
+  To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/3.0/ or send a letter to
+  Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+-->
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find mrp2_description)/urdf/deg_to_rad.xacro"/>
+
+  <xacro:include filename="$(find mrp2_description)/urdf/wheels/wheel.right.urdf.xacro"/>
+  <xacro:include filename="$(find mrp2_description)/urdf/wheels/wheel.left.urdf.xacro"/>
+  <xacro:include filename="$(find mrp2_description)/urdf/wheels/75mm.caster.urdf.xacro"/>
+
+  <xacro:include filename="$(find mrp2_description)/urdf/sensors/range.urdf.xacro"/>
+  <xacro:include filename="$(find mrp2_description)/urdf/sensors/hokuyo_utm_30lx_laser.urdf.xacro"/>
+  <xacro:include filename="$(find mrp2_description)/urdf/sensors/imu.urdf.xacro"/>
+
+  <xacro:include filename="$(find mrp2_description)/urdf/objects/cover.urdf.xacro"/>
+  <xacro:include filename="$(find mrp2_description)/urdf/objects/antenna.urdf.xacro"/>
+
+  <!-- Wheel characteristics -->
+
+  <property name="wheel_radius"     value="0.102"/>
+  <property name="wheel_width"      value="0.050"/>
+  <property name="wheel_separation" value="0.478"/>
+  <property name="wheel_torque"     value="5.0"/>
+  <property name="wheel_velocity"   value="2.0"/>
+
+
+  <!-- Caster wheel characteristics -->
+  <property name="caster_radius"       value="0.0375"/>
+  <property name="caster_width"        value="0.020"/>
+  <property name="caster_separation_x" value="0.426"/>
+  <property name="caster_separation_y" value="0.282"/>
+  <property name="caster_offset_x"     value="-0.002"/>
+  <property name="caster_offset_y"     value="0.0"/>
+  <property name="caster_offset_z"     value="0.075"/>
+
+  <!-- Laser characteristics -->
+  <property name="base_laser_x" value="0.239"/>
+  <property name="base_laser_y" value="0.0"/>
+  <property name="base_laser_z" value="0.2581"/>
+
+  <xacro:macro name="base" params="name">
+
+    <!-- Base -->
+    <link name="${name}_link">
+      <inertial>
+      <origin
+        xyz="0.0 0.0 0.0"
+        rpy="0 0 0" />
+      <mass
+        value="23.75049" />
+      <inertia
+        ixx="1.40843"
+        ixy="-0.00047"
+        ixz="-0.01284"
+        iyy="1.69950"
+        iyz="0.00099"
+        izz="1.30459" />
+    </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://mrp2_description/meshes/base_link_fp.stl" />
+        </geometry>
+        <material name="SkyBlue" />
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://mrp2_description/meshes/base_link_fp.stl" />
+        </geometry>
+      </collision>
+    </link>
+    <gazebo reference="${name}_link">
+      <material>Gazebo/White</material>
+    </gazebo>
+
+        <!-- Base footprint -->
+    <link name="${name}_footprint"/>
+
+    <joint name="${name}_footprint_joint" type="fixed">
+      <origin xyz="0 0 ${wheel_radius}" rpy="0 0 0" />
+      <child link="${name}_link" />
+      <parent link="${name}_footprint"/>
+    </joint>
+
+
+
+    <!-- ADROBOT ADDITION -->
+    <!--
+    <link name="${name}_adrobot_link">
+      <inertial>
+      <origin
+        xyz="0.0 0.0 0.0"
+        rpy="0 0 0" />
+      <mass
+        value="3.75049" />
+      <inertia
+        ixx="1.40843"
+        ixy="-0.00047"
+        ixz="-0.01284"
+        iyy="1.69950"
+        iyz="0.00099"
+        izz="1.30459" />
+    </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://mrp2_description/meshes/adrobot_s.stl" />
+        </geometry>
+        <material name="SkyBlue" />
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://mrp2_description/meshes/adrobot_s.stl" />
+        </geometry>
+      </collision>
+    </link>
+    <gazebo reference="${name}_adrobot_link">
+      <material>Gazebo/White</material>
+    </gazebo>
+
+    <joint name="${name}_adrobot_joint" type="fixed">
+      <origin xyz="-0.4 -0.372 0.3" rpy="${0 * deg_to_rad} 0 0" />
+      <child link="${name}_adrobot_link" />
+      <parent link="${name}_link"/>
+    </joint>
+	-->
+    <!-- ADROBOT ADDITION -->
+
+    <!-- Orange cover & antennas -->
+    <!--<xacro:antenna name="${name}_antenna_left" parent="${name}_link">
+      <origin xyz="-0.201 0.1062 0.195" rpy="0 0 0"/>
+    </xacro:antenna>
+    <xacro:antenna name="${name}_antenna_right" parent="${name}_link">
+      <origin xyz="-0.201 -0.1062 0.195" rpy="0 0 0"/>
+    </xacro:antenna>-->
+
+    <!-- Laser -->
+    <!-- Theoretic FOV = 220 -->
+
+    <xacro:hokuyo_utm_30lx_laser name="${name}_laser" parent="${name}" ros_topic="scan" update_rate="10" min_angle="${-135 * deg_to_rad}" max_angle="${135 * deg_to_rad}" >
+      <origin xyz="${base_laser_x} ${base_laser_y} ${base_laser_z}" rpy="0 0 0" />
+    </xacro:hokuyo_utm_30lx_laser>
+
+
+    <!-- IMU -->
+    <xacro:imu_sensor name="${name}_imu" parent="${name}_link" update_rate="100.0">
+      <origin xyz="0.200 0 0.200" rpy="0 ${0 * deg_to_rad} ${0 * deg_to_rad}"/>
+    </xacro:imu_sensor>
+
+    <!-- Sonars -->
+    <!--<xacro:range_sensor name="${name}_sonar_1" parent="${name}" ros_topic="sonar_${name}" update_rate="5" maxRange="0.75" minRange="0.01" fov="0.5" radiation="ultrasound">
+      <origin xyz="-0.183 0.183 0.173" rpy="0 0 ${135 * deg_to_rad}"/>
+    </xacro:range_sensor>
+
+    <xacro:range_sensor name="${name}_sonar_2" parent="${name}" ros_topic="sonar_${name}" update_rate="5" maxRange="0.75" minRange="0.01" fov="0.5" radiation="ultrasound">
+      <origin xyz="-0.259 0.0 0.173" rpy="0 0 ${180 * deg_to_rad}"/>
+    </xacro:range_sensor>
+
+    <xacro:range_sensor name="${name}_sonar_3" parent="${name}" ros_topic="sonar_${name}" update_rate="5" maxRange="0.75" minRange="0.01" fov="0.5" radiation="ultrasound">
+      <origin xyz="-0.183 -0.183 0.173" rpy="0 0 ${225 * deg_to_rad}"/>
+    </xacro:range_sensor>
+    -->
+    <!-- Wheels -->
+
+    <xacro:wheel_right side="right" reflect="-1.0" radius="${wheel_radius}" width="${wheel_width}" torque="${wheel_torque}" velocity="${wheel_velocity}" separation="${wheel_separation}" parent="${name}"/>
+    <xacro:wheel_left side="left"  reflect="1.0" radius="${wheel_radius}" width="${wheel_width}" torque="${wheel_torque}" velocity="${wheel_velocity}" separation="${wheel_separation}" parent="${name}"/>
+
+    <!-- Casters wheels -->
+
+    <xacro:caster side="front_left" radius="${caster_radius}" width="${caster_width}" position_x="0.213" position_y="0.141" position_z="0.0971" offset_x="-0.030" offset_y="0" offset_z="-0.0596" parent="${name}"/>
+    <xacro:caster side="front_right" radius="${caster_radius}" width="${caster_width}" position_x="0.213" position_y="-0.141" position_z="0.0971" offset_x="-0.030" offset_y="0" offset_z="-0.0596" parent="${name}"/>
+    <xacro:caster side="back_left" radius="${caster_radius}" width="${caster_width}" position_x="-0.213" position_y="0.141" position_z="0.0971" offset_x="-0.030" offset_y="0" offset_z="-0.0596" parent="${name}"/>
+    <xacro:caster side="back_right" radius="${caster_radius}" width="${caster_width}" position_x="-0.213" position_y="-0.141" position_z="0.0971" offset_x="-0.030" offset_y="0" offset_z="-0.0596" parent="${name}"/>
+
+  </xacro:macro>
+
+</robot>

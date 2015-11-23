@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+
+<!--
+  Copyright (c) 2014, PAL Robotics, S.L.
+  All rights reserved.
+
+  This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License.
+  To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/3.0/ or send a letter to
+  Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+-->
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find mrp2_description)/urdf/wheels/wheel.transmission.xacro"/>
+  <xacro:include filename="$(find mrp2_description)/urdf/wheels/wheel.gazebo.xacro"/>
+
+  <xacro:macro name="wheel_left" params="side reflect radius width torque velocity separation parent">
+    
+    <link name="wheel_${side}_link">
+      <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.70104587216324" />
+      <inertia
+        ixx="0.035"
+        ixy="0"
+        ixz="0"
+        iyy="0.024"
+        iyz="0"
+        izz="0.035" />
+    </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://mrp2_description/meshes/left_wheel.stl"/>
+        </geometry>
+        <material name="DarkGrey"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+        <geometry>
+          <cylinder radius="${radius}" length="${width}"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="wheel_${side}_joint" type="continuous">
+      <parent link="${parent}_link"/>
+      <child link="wheel_${side}_link"/>
+      <origin xyz="0 0.2395 0.1" rpy="0 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="${torque*2}" velocity="${velocity / radius}"/>
+    </joint>
+
+    <!--<gazebo reference="wheel_${side}_link">
+      <velocity_decay>
+        <linear>0.2</linear>
+        <angular>0.4</angular>
+      </velocity_decay>
+    </gazebo>
+
+    <gazebo reference="wheel_${side}_link">
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+    </gazebo>-->
+
+    <gazebo reference="wheel_${side}_link">
+      <material>Gazebo/DarkGrey</material>
+    </gazebo>
+
+        <!-- Transmission -->
+    <!--<xacro:wheel_transmission side="${side}"/>-->
+
+    <!-- Gazebo extensions -->
+    <xacro:wheel_gazebo side="${side}"/>
+
+  </xacro:macro>
+</robot>
