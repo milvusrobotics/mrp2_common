@@ -1,0 +1,12 @@
+<launch>
+  <rosparam command="load" file="$(find mrp2_control)/config/controls.yaml" />
+
+  <node name="controller_spawner" pkg="controller_manager" type="spawner"
+        args="mobile_base_controller imu_sensor_controller --shutdown-timeout 1" />
+  
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization" /> 
+
+  <node pkg="topic_tools" type="relay" name="cmd_vel_relay"
+        args="cmd_vel jackal_velocity_controller/cmd_vel" />
+</launch>
+

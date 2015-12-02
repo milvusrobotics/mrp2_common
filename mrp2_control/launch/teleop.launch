@@ -1,0 +1,27 @@
+<launch>
+
+  <include file="$(find twist_mux)/launch/twist_mux.launch">
+    <arg name="config_locks"  value="$(find mrp2_control)/config/twist_mux/twist_mux_locks.yaml"/>
+    <arg name="config_topics" value="$(find mrp2_control)/config/twist_mux/twist_mux_topics.yaml"/>
+
+    <arg name="config_joy" value="$(find mrp2_control)/config/twist_mux/joystick.yaml"/>
+    <arg name="cmd_vel_out" value="/mobile_base_controller/cmd_vel"/>
+  </include>
+
+  <arg name="cmd_vel" default="input_joy/cmd_vel" />
+
+  <rosparam command="load" file="$(find mrp2_control)/config/teleop.yaml" />
+  <node pkg="joy_teleop" type="joy_teleop.py" name="joy_teleop">
+    <remap from="cmd_vel" to="$(arg cmd_vel)" />
+  </node>
+
+  <node pkg="joy" type="joy_node" name="joystick">
+    <param name="autorepeat_rate" value="10" />
+    <param name="dev" value="/dev/input/js0" />
+  </node>
+
+  <node pkg="interactive_marker_twist_server" type="marker_server" name="twist_marker_server">
+    <remap from="twist_marker_server/cmd_vel" to="input_marker/cmd_vel" />
+  </node> 
+
+</launch>

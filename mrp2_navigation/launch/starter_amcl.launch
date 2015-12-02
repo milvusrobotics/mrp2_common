@@ -1,0 +1,91 @@
+<launch>
+	<!--<node name="tf_broadcaster" pkg="robot_setup_tf" type="tf_broadcaster"/>
+	<node name="footprint_broadcaster" pkg="robot_setup_tf" type="footprint_broadcaster"/>-->
+	<!--<node name="joy_node" pkg="joy" type="joy_node">
+		<param name="autorepeat_rate" value="10"/>
+		<param name="dev" value="/dev/input/js0"/>
+	</node>-->
+	<!--<node name="joystick_controller_node"  pkg="joystick_controller"  type="joystick_controller_node">
+	</node>-->
+	<!--<node name="odometry_manager_node" pkg="motion_controller" type="odometry_manager_node">
+			<remap from="odom" to="mobile_base_controller/odom" />
+	</node>-->
+	<!--<node name="motion_controller_node" pkg="motion_controller" type="motion_controller_node">
+	</node>
+	<node name="arbitration_node" pkg="motion_controller" type="arbitration_node">
+	</node>-->
+
+	<arg name="map_file" default="$(find mrp2_bringup)/maps/milvus_ofis.yaml"/>
+ 	<node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+ 	<arg name="use_map_topic" default="false"/>
+  <arg name="scan_topic" default="/scan" />
+
+  <node pkg="amcl" type="amcl" name="amcl">
+    <param name="use_map_topic" value="$(arg use_map_topic)"/>
+    <!-- Publish scans from best pose at a max of 10 Hz -->
+    <param name="odom_model_type" value="diff"/>
+    <param name="odom_alpha5" value="0.1"/>
+    <param name="gui_publish_rate" value="10.0"/>
+    <param name="laser_max_beams" value="720"/>
+    <param name="laser_min_range" value="0.1"/>
+    <param name="laser_max_range" value="30.0"/>
+    <param name="min_particles" value="500"/>
+    <param name="max_particles" value="2000"/>
+    <!-- Maximum error between the true distribution and the estimated distribution. -->
+    <param name="kld_err" value="0.05"/>
+    <param name="kld_z" value="0.99"/>
+    <param name="odom_alpha1" value="0.2"/>
+    <param name="odom_alpha2" value="0.2"/>
+    <!-- translation std dev, m -->
+    <param name="odom_alpha3" value="0.2"/>
+    <param name="odom_alpha4" value="0.2"/>
+    <param name="laser_z_hit" value="0.5"/>
+    <param name="laser_z_short" value="0.05"/>
+    <param name="laser_z_max" value="0.05"/>
+    <param name="laser_z_rand" value="0.5"/>
+    <param name="laser_sigma_hit" value="0.2"/>
+    <param name="laser_lambda_short" value="0.1"/>
+    <param name="laser_model_type" value="likelihood_field"/>
+    <!-- Maximum distance to do obstacle inflation on map, for use in likelihood_field model. -->
+    <param name="laser_likelihood_max_dist" value="2.0"/>
+    <!-- Translational movement required before performing a filter update.  -->
+    <param name="update_min_d" value="0.1"/>
+    <!--Rotational movement required before performing a filter update. -->
+    <param name="update_min_a" value="0.314"/>
+    <param name="odom_frame_id" value="odom"/>
+    <param name="base_frame_id" value="base_footprint"/>
+    <param name="global_frame_id" value="map"/>
+    <!-- Number of filter updates required before resampling. -->
+    <param name="resample_interval" value="1"/>
+    <!-- Increase tolerance because the computer can get quite busy -->
+    <param name="transform_tolerance" value="1.0"/>
+    <!-- Exponential decay rate for the slow average weight filter, used in deciding when to recover by adding random poses. A good value might be 0.001. -->
+    <param name="recovery_alpha_slow" value="0.0"/>
+    <!--Exponential decay rate for the fast average weight filter, used in deciding when to recover by adding random poses. A good value might be 0.1. -->
+    <param name="recovery_alpha_fast" value="0.1"/>
+    <!-- Initial pose mean -->
+    <param name="initial_pose_x" value="0.0" />
+    <param name="initial_pose_y" value="0.0" />
+    <param name="initial_pose_a" value="0.0" />
+    <!-- When set to true, AMCL will subscribe to the map topic rather than making a service call to receive its map.-->
+    <param name="receive_map_topic" value="true"/>
+    <!--  When set to true, AMCL will only use the first map it subscribes to, rather than updating each time a new one is received. -->
+    <param name="first_map_only" value="false"/>
+    <remap from="scan" to="$(arg scan_topic)"/>
+  </node>
+
+	<node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+	    <param name="recovery_behavior_enabled" value="true"/>
+	    <param name="controller_frequency" value="5.0"/>
+	    <param name="planner_frequency" value="1.0"/>
+	    <rosparam file="$(find mrp2_bringup)/yaml/costmap_common_params.yaml" command="load" ns="global_costmap" />
+	    <rosparam file="$(find mrp2_bringup)/yaml/costmap_common_params.yaml" command="load" ns="local_costmap" />
+	    <rosparam file="$(find mrp2_bringup)/yaml/local_costmap_params.yaml" command="load" />
+	    <rosparam file="$(find mrp2_bringup)/yaml/global_costmap_params.yaml" command="load" />
+	    <rosparam file="$(find mrp2_bringup)/yaml/base_local_planner.yaml" command="load" />
+	    <remap from="cmd_vel" to="nav_vel" />
+	    <remap from="odom" to="odometry/filtered" />
+	</node>
+</launch>
+

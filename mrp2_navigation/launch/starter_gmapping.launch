@@ -1,0 +1,105 @@
+<launch>
+	<!--<node name="tf_broadcaster" pkg="robot_setup_tf" type="tf_broadcaster"/>
+	<node name="footprint_broadcaster" pkg="robot_setup_tf" type="footprint_broadcaster"/>-->
+	<!--<node name="joy_node" pkg="joy" type="joy_node">
+		<param name="autorepeat_rate" value="10"/>
+		<param name="dev" value="/dev/input/js0"/>
+	</node>-->
+	<!--<node name="joystick_controller_node"  pkg="joystick_controller"  type="joystick_controller_node">
+	</node>-->
+	<!--<node name="odometry_manager_node" pkg="motion_controller" type="odometry_manager_node">-->
+			<!--<remap from="odom" to="mobile_base_controller/odom" />-->
+	<!--</node>-->
+	<!--<node name="motion_controller_node" pkg="motion_controller" type="motion_controller_node">
+	</node>
+	<node name="arbitration_node" pkg="motion_controller" type="arbitration_node">
+	</node>-->
+
+	<node name="urg" pkg="urg_node" type="urg_node">
+		<param name="angle_min" value="-2.08"/>
+  		<param name="angle_max" value="2.08"/>
+  		<param name="frame_id" value="base_laser_link"/>
+  		<param name="serial_port" value="/dev/ttyACM1"/>
+	</node>
+	<node name="um7" pkg="um7" type="um7_driver">
+		<param name="port" type="string" value="/dev/mrp_imu"/>
+		<param name="frame_id" type="string" value="base_imu_link"/>
+		<param name="mag_msgs" type="bool" value="true"/>
+		<remap from="/imu/data" to="/imu/data_raw"/>
+	</node>
+<node pkg="imu_complementary_filter" type="complementary_filter_node"
+      name="complementary_filter_gain_node" output="screen">
+    <param name="do_bias_estimation" value="true"/>
+    <param name="do_adaptive_gain" value="false"/>
+    <param name="use_mag" value="false"/>
+    <param name="gain_acc" value="0.001"/>
+    <param name="gain_mag" value="0.005"/>
+  </node>
+	<!--<node pkg="imu_filter_madgwick" type="imu_filter_node" name="imu_filter">
+         <rosparam>
+                  use_mag: true
+                  gain: 0.6
+                  zeta: 0.001
+                  publish_tf: false
+         </rosparam>
+	</node>-->
+	<!--<node name="mrp2_display_node" pkg="mrp2_display" type="mrp2_display_node">
+		<param name="port" type="string" value="/dev/mrp_display"/>	
+	</node>-->
+	<node name="angle_publisher" pkg="angle_publisher" type="angle_publisher">
+	</node>
+	<!--<node name="powerboard_messenger_node" pkg="powerboard_messenger" type="powerboard_messenger_node">
+	</node>-->
+	
+	<node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+		<remap from="scan" to="scan"/>
+		<param name="base_frame" value="base_footprint" />
+		<param name="odom_frame" value="odom"/>
+		<param name="map_update_interval" value="2.0"/>
+		<param name="maxUrange" value="25.0"/>
+		<param name="sigma" value="0.05"/>
+		<param name="kernelSize" value="1"/>
+		<param name="lstep" value="0.05"/>
+		<param name="astep" value="0.1"/>
+		<param name="iterations" value="5"/>
+		<param name="lsigma" value="0.075"/>
+		<param name="ogain" value="3.0"/>
+		<param name="lskip" value="0"/>
+		<param name="minimumScore" value="0"/>
+		<param name="srr" value="0.1"/>
+		<param name="srt" value="0.2"/>
+		<param name="str" value="0.1"/>
+		<param name="stt" value="0.1"/>
+		<param name="linearUpdate" value="0.5"/>
+		<param name="angularUpdate" value="0.436"/>
+		<param name="temporalUpdate" value="1.0"/>
+		<param name="resampleThreshold" value="0.5"/>
+		<param name="particles" value="25"/>
+		<param name="xmin" value="-25.0"/>
+		<param name="ymin" value="-25.0"/>
+		<param name="xmax" value="25.0"/>
+		<param name="ymax" value="25.0"/>
+		<param name="delta" value="0.05"/>
+		<param name="llsamplerange" value="0.01"/>
+		<param name="llsamplestep" value="0.01"/>
+		<param name="lasamplerange" value="0.005"/>
+		<param name="lasamplestep" value="0.005"/>
+		<param name="occ_thresh" value="0.25"/>
+		<param name="transform_publish_period" value="0.05"/>
+		<param name="maxRange" value="30.0"/>
+	</node>
+
+	<node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+	    <param name="recovery_behavior_enabled" value="true"/>
+	    <param name="controller_frequency" value="5.0"/>
+        <param name="planner_frequency" value="1.0"/>
+	    <rosparam file="$(find mrp2_bringup)/yaml/costmap_common_params.yaml" command="load" ns="global_costmap" />
+	    <rosparam file="$(find mrp2_bringup)/yaml/costmap_common_params.yaml" command="load" ns="local_costmap" />
+	    <rosparam file="$(find mrp2_bringup)/yaml/local_costmap_params.yaml" command="load" />
+	    <rosparam file="$(find mrp2_bringup)/yaml/global_costmap_params.yaml" command="load" />
+	    <rosparam file="$(find mrp2_bringup)/yaml/base_local_planner.yaml" command="load" />
+	    <remap from="cmd_vel" to="nav_vel" />
+	    <remap from="odom" to="odometry/filtered" />
+	</node>
+</launch>
+
