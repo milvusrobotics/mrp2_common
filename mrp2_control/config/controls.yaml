@@ -50,6 +50,10 @@ mobile_base_controller:
       has_jerk_limits        : false
       max_jerk               : !degrees 600.0
 
+mrp2_joint_publisher:
+  type: "joint_state_controller/JointStateController"
+  publish_rate: 50
+
 ekf_localization:
   frequency: 50
   odom0: /jackal_velocity_controller/odom
