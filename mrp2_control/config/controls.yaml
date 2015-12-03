@@ -56,7 +56,7 @@ mrp2_joint_publisher:
 
 ekf_localization:
   frequency: 50
-  odom0: /jackal_velocity_controller/odom
+  odom0: /mobile_base_controller/odom
   odom0_config: [true, true, false,
                  false, false, false,
                  true, true, true,
