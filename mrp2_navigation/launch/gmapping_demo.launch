@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <launch>
 
   <include file="$(find mrp2_navigation)/launch/include/gmapping.launch"/>
