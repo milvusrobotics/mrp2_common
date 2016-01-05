@@ -46,6 +46,6 @@ TrajectoryPlannerROS:
     publish_cost_grid_pc: true
 
     #Oscillation Prevention Parameters
-    oscillation_reset_dist: 0.05 #How far the robot must travel in meters before oscillation flags are reset (double, default: 0.05)
-    escape_reset_dist: 0.02
-    escape_reset_theta: 0.02
+    oscillation_reset_dist: 0.07 #How far the robot must travel in meters before oscillation flags are reset (double, default: 0.05)
+    escape_reset_dist: 0.01
+    escape_reset_theta: 0.01
