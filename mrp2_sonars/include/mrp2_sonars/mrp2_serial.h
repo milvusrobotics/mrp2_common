@@ -8,6 +8,7 @@
 #include <stdint.h>
 #include <unistd.h>
 #include <vector>
+#include "mrp2_sonars/serial_comm.h"
 
 using std::string;
 

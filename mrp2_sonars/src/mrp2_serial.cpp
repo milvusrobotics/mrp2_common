@@ -1,4 +1,6 @@
-#include "mrp2_sonars/mrp2_serial.h"
+#include <mrp2_hardware/mrp2_serial.h>
+
+milvus::SerialComm ser_comm;
 
 MRP2_Serial::MRP2_Serial (int port_nr, uint32_t baudrate)
  : _baudrate(baudrate), _port_nr(port_nr)
@@ -8,11 +10,14 @@ MRP2_Serial::MRP2_Serial (int port_nr, uint32_t baudrate)
   seekForChar = true;
   startChar = '$';
   _mode[0] = '8'; _mode[1] = 'N'; _mode[2] = '1';
+
+  ser_comm.open_port("/dev/mrp2_ftdi_MRP2SNR001", 9600, "8N1");
   
-  if(RS232_OpenComport(_port_nr,_baudrate,_mode))
+  /*if(RS232_OpenComport(_port_nr,_baudrate,_mode))
   {
     printf("Can't open comport.\n");
-  }
+  }*/
+
   /*else
     printf("Port %d opened with baud %d.\n", _port_nr, _baudrate);*/
   _sonars.reserve(20);
@@ -66,7 +71,8 @@ MRP2_Serial::send_and_get_reply(uint8_t _command, uint8_t *send_array, int send_
   send_array[0] = 'S';
 
   //printf("\nSent and get reply called at %f...\n", (double)(tv1.tv_sec + (double)(tv1.tv_usec/1000000.0)) );
-  int ret =RS232_SendBuf(_port_nr,send_array,1);
+  //int ret =RS232_SendBuf(_port_nr,send_array,1);
+  int ret =ser_comm.send_buf(send_array,1);
   
   if (is_ack)
   {
@@ -110,7 +116,8 @@ MRP2_Serial::read_serial (uint8_t _command_to_read)
   //for (int i = 0; i < 10; ++i)
   //{
     
-    recievedData = RS232_PollComport(_port_nr, inData, 50);
+    //recievedData = RS232_PollComport(_port_nr, inData, 50);
+    recievedData = ser_comm.poll_comport(inData, 50);
     usleep(1000);
     //printf("\nCalling process For Command %d\n", _command_to_read);
     return process(inData, recievedData, _command_to_read);

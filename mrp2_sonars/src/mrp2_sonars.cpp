@@ -4,7 +4,7 @@
  #include <std_msgs/MultiArrayDimension.h>
  #include <std_msgs/Int32MultiArray.h> 
 
- #include <mrp2_sonars/mrp2_serial.h>
+ #include <mrp2_hardware/mrp2_serial.h>
 
 MRP2_Serial *sonar_serial;
 
@@ -19,7 +19,7 @@ int main(int argc, char **argv)
 	ros::Rate loop_rate(50);
 
 
-	sonar_serial = new MRP2_Serial(0, 9600);
+	sonar_serial = new MRP2_Serial("/dev/mrp2_ftdi_MRP2SNR001", 9600, "8N1");
 
 	sonars_pub = n.advertise<std_msgs::Int32MultiArray>("sonars", 100);
 
@@ -35,9 +35,8 @@ int main(int argc, char **argv)
     { 
     	std_msgs::Int32MultiArray bumpers_array;
 
-    	recieved_array.reserve(20);
 		recieved_array.clear();
-		recieved_array = sonar_serial->get_sonars();
+		recieved_array = sonar_serial->get_sonars(true);
 
 
 		bumpers_array.data.clear();
