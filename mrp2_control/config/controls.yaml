@@ -7,7 +7,7 @@ mobile_base_controller:
   twist_covariance_diagonal: [0.001, 0.001, 1.0e-3, 1.0e-3, 1.0e-3, 0.01]
 
   wheel_separation_multiplier: 1.000
-  wheel_radius_multiplier    : 1.000
+  wheel_radius_multiplier    : 0.961
 
   enable_pose_covariance_update: true
   error_constant_left : 0.0
@@ -58,17 +58,24 @@ ekf_localization:
   frequency: 50
   odom0: /mobile_base_controller/odom
   odom0_config: [true, true, false,
-                 false, false, false,
-                 true, true, true,
-                 false, false, true]
+                 false, false, true,
+                 true, true, false,
+                 false, false, true,
+                 true, true, false]
   odom0_differential: true
+
   imu0: /imu/data
   imu0_config: [false, false, false,
-                true, true, true,
+                false, false, true,
                 false, false, false,
-                true, true, true]
+                false, false, true,
+                false, false, false]
+
   imu0_differential: false
+  imu0_remove_gravitational_acceleration: true
+
   odom_frame: odom
   base_link_frame: base_footprint
   world_frame: odom
   two_d_mode: true
+

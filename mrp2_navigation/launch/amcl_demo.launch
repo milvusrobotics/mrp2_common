@@ -1,7 +1,7 @@
 <launch>
 
   <!-- Run the map server -->
- <arg name="map_file" default="$(find mrp2_navigation)/maps/milvus_ofis.yaml"/>
+ <arg name="map_file" default="$(find mrp2_navigation)/maps/milvus_office.yaml"/>
  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
 
   <!--- Run AMCL -->
