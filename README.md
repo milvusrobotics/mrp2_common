@@ -8,7 +8,6 @@ This repository contains common ROS packages for MRP2 Robot. These packages are 
 * mrp2_common
 * mrp2_control
 * mrp2_description
-* mrp2_display
 * mrp2_navigation
 
 ### 2. Information on Packages ###
@@ -24,9 +23,5 @@ This package contains teleoperation and [ros_control](http://wiki.ros.org/ros_co
 #### 2.4. mrp2_description ####
 This package has URDF and xacro files for description of MRP2. Both gazebo and ros_control use this package for visualization and navigation purposes.
 
-#### 2.5. mrp2_display ####
-This package is for managing touch LCD panel on MRP2.
-
 #### 2.5. mrp2_navigation ####
 This package includes launch files, parameters and maps for different navigation applications.
-
