@@ -1,37 +1,32 @@
-# README #
+# MRP2 Common ROS Packages #
 
-This repository contains the main ROS packages for MRP2. This version has ros_control implemented with additional built-in packages developed by the community.
+This repository contains common ROS packages for MRP2 Robot. These packages are needed for both the robot itself and the simulation. This version has ros_control implemented with additional built-in packages developed by the community.
 
-### Active Packages ###
+### 1. Active Packages ###
 
-* mrp2
-* mrp2_bringup
-* mrp2_controller_configuration
+* mrp2_analyzer
+* mrp2_common
+* mrp2_control
 * mrp2_description
-* mrp2_hardware
 * mrp2_display
+* mrp2_navigation
 
-### Obselete Packages ###
+### 2. Information on Packages ###
+#### 2.1. mrp2_analyzer ####
+This package is used for diagnostic purposes. It makes use of [diagnostic_aggregator](http://wiki.ros.org/diagnostic_aggregator) and publishes states of right and left motors, battery and lights.
 
-* joystick_controller
-* motion_controller
-* powerboard_messenger
-* robot_setup_tf
+#### 2.2. mrp2_common ####
+This is the metapackage only. No other applications.
 
+#### 2.3. mrp2_control ####
+This package contains teleoperation and [ros_control](http://wiki.ros.org/ros_control) related launch files and configurations.
 
-### How to launch? ###
+#### 2.4. mrp2_description ####
+This package has URDF and xacro files for description of MRP2. Both gazebo and ros_control use this package for visualization and navigation purposes.
 
-robot_upstart is not implemented yet on the new ROS setup of MRP2. Though the main launch file for the startup is as follows:
-```sh
-roslaunch mrp2_bringup mrp2.launch
-```
-Launch sequence is as follows:
+#### 2.5. mrp2_display ####
+This package is for managing touch LCD panel on MRP2.
 
-* mrp2.launch
-* upload_mrp2.launch
-* mrp2_bringup.launch
-    * default_controllers.launch
-    * twist_mux.launch
-    * joystick_teleop.launch
-* starter_gmapping.launch
+#### 2.5. mrp2_navigation ####
+This package includes launch files, parameters and maps for different navigation applications.
 
