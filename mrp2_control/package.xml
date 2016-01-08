@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>mrp2_control</name>
-  <version>0.2.1</version>
+  <version>0.2.0</version>
   <description>Teleoperation and ros controls related launch files and configurations.</description>
   <maintainer email="akifhno@gmail.com">Akif Hacinecipoglu</maintainer>
   <license>BSD</license>
