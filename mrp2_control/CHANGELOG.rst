@@ -2,8 +2,8 @@
 Changelog for package mrp2_control
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.2.1 (2016-01-08)
+------------------
 * Merged config files
 * Directory structure update
 * Initial commit
