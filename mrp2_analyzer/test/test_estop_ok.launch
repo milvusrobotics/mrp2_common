@@ -1,8 +1,0 @@
-<launch>
-  <node pkg="mrp2_analyzer" type="mrp2_power_pub.py" name="diag_pub" />
-
-  <node pkg="diagnostic_aggregator" type="aggregator_node" name="diag_agg" >
-      <rosparam command="load" 
-              file="$(find mrp2_analyzer)/test/mrp2_analyzer_load.yaml" />
-  </node>
-</launch>

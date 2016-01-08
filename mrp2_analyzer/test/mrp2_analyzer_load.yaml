@@ -1,4 +1,0 @@
-analyzers:
-  motors:
-    type: MRP2Analyzer
-    power_board_name: Power board 1000

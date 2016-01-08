@@ -14,3 +14,9 @@ include_directories(include ${catkin_INCLUDE_DIRS})
 
 add_library(mrp2_analyzer src/mrp2_analyzer.cpp)
 target_link_libraries(mrp2_analyzer ${catkin_LIBRARIES})
+
+install(TARGETS ${PROJECT_NAME}
+  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)

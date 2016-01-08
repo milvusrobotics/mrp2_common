@@ -1,29 +1,8 @@
 <?xml version="1.0"?>
-<!--
-
-  Copyright (c) 2014, PAL Robotics, S.L.
-  All rights reserved.
-
-  This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License.
-  To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/3.0/ or send a letter to
-  Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
--->
-<robot  xmlns:xacro="http://www.ros.org/wiki/xacro"
-        name="mrp2" >
-
-  <!-- The following included files set up definitions of parts of the robot body -->
-
-  <!-- Materials for visualization -->
+<robot  xmlns:xacro="http://www.ros.org/wiki/xacro" name="mrp2" >
   <xacro:include filename="$(find mrp2_description)/urdf/materials.urdf.xacro" />
-  
-  <!-- Base -->
   <xacro:include filename="$(find mrp2_description)/urdf/base/base.urdf.xacro" />
-
-    <!-- Generic simulator_gazebo plugins -->
   <xacro:include filename="$(find mrp2_description)/gazebo/gazebo.urdf.xacro" />
-
-
-  <!-- Now we can start using the macros included above to define the actual robot -->
   <xacro:base name="base"/>
 </robot>
 
