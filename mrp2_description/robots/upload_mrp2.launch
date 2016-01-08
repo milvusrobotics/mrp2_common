@@ -1,9 +1,0 @@
-<launch>
-  <arg name="robot" default="full"/>
-
-  <!-- Robot description -->
-  <param name="robot_description" command="$(find xacro)/xacro.py '$(find mrp2_description)/robots/mrp2_$(arg robot).urdf.xacro'" />
-
-  <!-- Joint limits -->
-  <rosparam command="load" file="$(find mrp2_description)/config/joint_limits.yaml"/>
-</launch>

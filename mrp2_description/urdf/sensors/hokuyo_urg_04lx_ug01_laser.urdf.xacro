@@ -1,12 +1,5 @@
 <?xml version="1.0"?>
-<!--
-  Copyright (c) 2011, PAL Robotics, S.L.
-  All rights reserved.
 
-  This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License.
-  To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/3.0/ or send a letter to
-  Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
--->
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:include filename="$(find mrp2_description)/urdf/sensors/hokuyo_urg_04lx_ug01_laser.gazebo.xacro" />
@@ -37,7 +30,6 @@
       <child  link="${name}_link"/>
     </joint>
 
-    <!-- gazebo extensions -->
     <xacro:hokuyo_urg_04lx_ug01_laser_gazebo name="${name}" ros_topic="${ros_topic}" update_rate="${update_rate}" min_angle="${min_angle}" max_angle="${max_angle}" />
 
   </xacro:macro>

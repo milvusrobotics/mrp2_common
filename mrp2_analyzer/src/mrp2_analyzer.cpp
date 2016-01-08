@@ -26,7 +26,7 @@ bool MRP2Analyzer::init(const string base_name, const ros::NodeHandle &n)
 
   if (!n.getParam("power_board_name", power_board_name_))
   {
-     ROS_ERROR("No power board name was specified in MRP2Analyzer! Power board must be \"MRP Powerboard 10XX\". Namespace: %s", n.getNamespace().c_str());
+     ROS_ERROR("No powerboard name was specified in MRP2Analyzer! Powerboard must be \"MRP2 Powerboard XX\". Namespace: %s", n.getNamespace().c_str());
      return false;
   }
 
