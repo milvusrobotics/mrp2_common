@@ -10,7 +10,7 @@ global_costmap:
    origin_y: -20.0
    static_map: true
    rolling_window: false
-   
+
    plugins:
    - {name: static_layer, type: "costmap_2d::StaticLayer"}
    - {name: obstacles_layer, type: "costmap_2d::ObstacleLayer"}

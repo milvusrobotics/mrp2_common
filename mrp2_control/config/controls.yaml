@@ -57,19 +57,19 @@ mrp2_joint_publisher:
 ekf_localization:
   frequency: 50
   odom0: /mobile_base_controller/odom
-  odom0_config: [true, true, false,
+  odom0_config: [false, false, false,
+                 false, false, false,
+                 true, true, true,
                  false, false, true,
-                 true, true, false,
-                 false, false, true,
-                 true, true, false]
-  odom0_differential: true
+                 false, false, false]
+  odom0_differential: false
 
   imu0: /imu/data
   imu0_config: [false, false, false,
                 false, false, true,
                 false, false, false,
                 false, false, true,
-                false, false, false]
+                true, true, false]
 
   imu0_differential: false
   imu0_remove_gravitational_acceleration: true
@@ -78,4 +78,3 @@ ekf_localization:
   base_link_frame: base_footprint
   world_frame: odom
   two_d_mode: true
-
