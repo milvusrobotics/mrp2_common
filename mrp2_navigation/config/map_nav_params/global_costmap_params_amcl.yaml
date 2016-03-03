@@ -10,7 +10,7 @@ global_costmap:
    origin_y: -20.0
    static_map: true
    rolling_window: false
-   transform_tolerance: 1.0
+   transform_tolerance: 0.5
 
    plugins:
    - {name: static_layer, type: "costmap_2d::StaticLayer"}

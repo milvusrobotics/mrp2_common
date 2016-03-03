@@ -7,9 +7,13 @@ mobile_base_controller:
   twist_covariance_diagonal: [0.001, 0.001, 1.0e-3, 1.0e-3, 1.0e-3, 0.01]
 
   wheel_separation_multiplier: 1.000
-  wheel_radius_multiplier    : 0.961
+  wheel_radius_multiplier    : 1.000
+
+  velocity_rolling_window_size: 2
 
   enable_pose_covariance_update: true
+  estimate_velocity_from_position: false
+
   error_constant_left : 0.0
   error_constant_right: 0.0
 
@@ -30,17 +34,19 @@ mobile_base_controller:
   # Publish wheel data
   publish_wheel_data: false
 
+  joint_state_publish_rate: 50
+
   # Velocity and acceleration limits
   # Whenever a min_* is unspecified, default to -max_*
   linear:
     x:
-      has_velocity_limits    : false
-      max_velocity           :  2.0 # m/s
-      min_velocity           : -2.0 # m/s
+      has_velocity_limits    : true
+      max_velocity           :  0.75 # m/s
+      min_velocity           : -0.75 # m/s
       has_acceleration_limits: false
-      max_acceleration       :  6.0 # m/s^2
+      max_acceleration       :  0.75 # m/s^2
       has_jerk_limits        : false
-      max_jerk               :  1.0 # m/s^3
+      max_jerk               :  0.25 # m/s^3
   angular:
     z:
       has_velocity_limits    : false
@@ -56,25 +62,65 @@ mrp2_joint_publisher:
 
 ekf_localization:
   frequency: 50
+  sensor_timeout: .05
+  transform_time_offset: 0.0
+
   odom0: /mobile_base_controller/odom
   odom0_config: [false, false, false,
                  false, false, false,
-                 true, true, true,
+                 true, false, false,
                  false, false, true,
                  false, false, false]
-  odom0_differential: false
+  odom0_differential: true
+  odom0_relative: true
+  odom0_queue_size: 5
 
-  imu0: /imu/data
+  imu0: /imu/data_raw
   imu0_config: [false, false, false,
-                false, false, true,
+                false, false, false,
                 false, false, false,
                 false, false, true,
-                true, true, false]
+                false, false, false]
 
   imu0_differential: false
+  imu0_relative: true
+  imu0_queue_size: 5
   imu0_remove_gravitational_acceleration: true
 
   odom_frame: odom
   base_link_frame: base_footprint
   world_frame: odom
   two_d_mode: true
+
+  # x, y, z, a, b, g, x_d, y_d, z_d, a_d, b_d, g_d, x_dd, y_dd, z_dd
+  initial_estimate_covariance: [1e-9, 0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                0,    1e-9, 0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                0,    0,    1e-9, 0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                0,    0,    0,    1e-9, 0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                0,    0,    0,    0,    1e-9, 0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                0,    0,    0,    0,    0,    1e-9, 0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                0,    0,    0,    0,    0,    0,    1e-9, 0,    0,    0,     0,     0,     0,    0,    0,
+                                0,    0,    0,    0,    0,    0,    0,    1e-9, 0,    0,     0,     0,     0,    0,    0,
+                                0,    0,    0,    0,    0,    0,    0,    0,    1e-9, 0,     0,     0,     0,    0,    0,
+                                0,    0,    0,    0,    0,    0,    0,    0,    0,    1e-9,  0,     0,     0,    0,    0,
+                                0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     1e-9,  0,     0,    0,    0,
+                                0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     1e-9,  0,    0,    0,
+                                0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     1e-9, 0,    0,
+                                0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    1e-9, 0,
+                                0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    1e-9]
+
+  process_noise_covariance: [0.05, 0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                            0,    0.05, 0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                            0,    0,    0.06, 0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                            0,    0,    0,    0.03, 0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                            0,    0,    0,    0,    0.05, 0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                            0,    0,    0,    0,    0,    0.06, 0,     0,     0,    0,    0,    0,    0,    0,    0,
+                            0,    0,    0,    0,    0,    0,    0.025, 0,     0,    0,    0,    0,    0,    0,    0,
+                            0,    0,    0,    0,    0,    0,    0,     0.025, 0,    0,    0,    0,    0,    0,    0,
+                            0,    0,    0,    0,    0,    0,    0,     0,     0.04, 0,    0,    0,    0,    0,    0,
+                            0,    0,    0,    0,    0,    0,    0,     0,     0,    0.01, 0,    0,    0,    0,    0,
+                            0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0.01, 0,    0,    0,    0,
+                            0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0.02, 0,    0,    0,
+                            0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0.01, 0,    0,
+                            0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0.01, 0,
+                            0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0.015]
