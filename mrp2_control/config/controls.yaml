@@ -7,7 +7,7 @@ mobile_base_controller:
   twist_covariance_diagonal: [0.001, 0.001, 1.0e-3, 1.0e-3, 1.0e-3, 0.01]
 
   wheel_separation_multiplier: 1.000
-  wheel_radius_multiplier    : 0.961
+  wheel_radius_multiplier    : 1.000
 
   enable_pose_covariance_update: true
   error_constant_left : 0.0
