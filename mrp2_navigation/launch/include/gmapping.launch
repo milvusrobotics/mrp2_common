@@ -33,7 +33,7 @@
         <param name="temporalUpdate" value="2.0"/>
         <param name="resampleThreshold" value="0.4"/>
 
-        <param name="particles" value="10"/>
+        <param name="particles" value="30"/>
 
         <param name="xmin" value="-10.0"/>
         <param name="ymin" value="-10.0"/>

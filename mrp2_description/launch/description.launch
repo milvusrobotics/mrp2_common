@@ -4,5 +4,7 @@
 
   <param name="robot_description" command="$(find xacro)/xacro.py '$(find mrp2_description)/robots/mrp2_$(arg robot).urdf.xacro'" />
 
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+  	<param name="use_tf_static" value="true"/>
+  </node>
 </launch>
