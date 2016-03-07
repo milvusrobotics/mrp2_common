@@ -7,7 +7,7 @@
   <license>BSD</license>
 
   <author email="akifhno@gmail.com">Akif Hacinecipoglu</author>
-  <url type="website">http://wiki.ros.org/Robots/MRP2</url>
+  <url type="website">http://wiki.ros.org/mrp2_control</url>
 
   <buildtool_depend>catkin</buildtool_depend>
 
