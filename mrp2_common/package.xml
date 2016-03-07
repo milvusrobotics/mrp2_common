@@ -11,7 +11,10 @@
 
   <buildtool_depend>catkin</buildtool_depend>
 
+  <run_depend>mrp2_analyzer</run_depend>
+  <run_depend>mrp2_control</run_depend>
   <run_depend>mrp2_description</run_depend>
+  <run_depend>mrp2_navigation</run_depend>
 
   <export>
     <metapackage/>
