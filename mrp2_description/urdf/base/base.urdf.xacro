@@ -9,6 +9,7 @@
 
   <xacro:include filename="$(find mrp2_description)/urdf/sensors/hokuyo_utm_30lx_laser.urdf.xacro"/>
   <xacro:include filename="$(find mrp2_description)/urdf/sensors/imu.urdf.xacro"/>
+  <xacro:include filename="$(find mrp2_description)/urdf/sensors/sonar.urdf.xacro"/>
 
   <!-- Wheel characteristics -->
   <property name="wheel_radius"     value="0.100"/>
@@ -98,6 +99,29 @@
     <xacro:caster side="front_right" radius="${caster_radius}" width="${caster_width}" position_x="0.213" position_y="-0.141" position_z="0.0971" offset_x="-0.030" offset_y="0" offset_z="-0.0596" parent="${name}"/>
     <xacro:caster side="back_left" radius="${caster_radius}" width="${caster_width}" position_x="-0.213" position_y="0.141" position_z="0.0971" offset_x="-0.030" offset_y="0" offset_z="-0.0596" parent="${name}"/>
     <xacro:caster side="back_right" radius="${caster_radius}" width="${caster_width}" position_x="-0.213" position_y="-0.141" position_z="0.0971" offset_x="-0.030" offset_y="0" offset_z="-0.0596" parent="${name}"/>
+
+    <!-- Sonar sensors -->
+    <xacro:sonar_sensor name="${name}_sonar_1" parent="${name}" ros_topic="sonar_1" update_rate="20" maxRange="4.0" minRange="0.01" fov="${35 * deg_to_rad}" radiation="ultrasound">
+      <origin xyz="0.2688 0.17956 0.06155" rpy="0 0 ${30 * deg_to_rad}"/>
+    </xacro:sonar_sensor>
+    <xacro:sonar_sensor name="${name}_sonar_2" parent="${name}" ros_topic="sonar_2" update_rate="20" maxRange="4.0" minRange="0.01" fov="${35 * deg_to_rad}" radiation="ultrasound">
+      <origin xyz="0.28947 0.09241 0.06155" rpy="0 0 ${12 * deg_to_rad}"/>
+    </xacro:sonar_sensor>
+    <xacro:sonar_sensor name="${name}_sonar_3" parent="${name}" ros_topic="sonar_3" update_rate="20" maxRange="4.0" minRange="0.01" fov="${35 * deg_to_rad}" radiation="ultrasound">
+      <origin xyz="0.29671 0.0 0.06155" rpy="0 0 ${0 * deg_to_rad}"/>
+    </xacro:sonar_sensor>
+    <xacro:sonar_sensor name="${name}_sonar_4" parent="${name}" ros_topic="sonar_4" update_rate="20" maxRange="4.0" minRange="0.01" fov="${35 * deg_to_rad}" radiation="ultrasound">
+      <origin xyz="0.28947 -0.09241 0.06155" rpy="0 0 ${-12 * deg_to_rad}"/>
+    </xacro:sonar_sensor>
+    <xacro:sonar_sensor name="${name}_sonar_5" parent="${name}" ros_topic="sonar_5" update_rate="20" maxRange="4.0" minRange="0.01" fov="${35 * deg_to_rad}" radiation="ultrasound">
+      <origin xyz="0.2688 -0.17956 0.06155" rpy="0 0 ${-30 * deg_to_rad}"/>
+    </xacro:sonar_sensor>
+    <xacro:sonar_sensor name="${name}_sonar_6" parent="${name}" ros_topic="sonar_6" update_rate="20" maxRange="4.0" minRange="0.01" fov="${35 * deg_to_rad}" radiation="ultrasound">
+      <origin xyz="-0.25648 -0.10103 0.28155" rpy="0 0 ${180 * deg_to_rad}"/>
+    </xacro:sonar_sensor>
+    <xacro:sonar_sensor name="${name}_sonar_7" parent="${name}" ros_topic="sonar_7" update_rate="20" maxRange="4.0" minRange="0.01" fov="${35 * deg_to_rad}" radiation="ultrasound">
+      <origin xyz="-0.25648 0.10103 0.28155" rpy="0 0 ${180 * deg_to_rad}"/>
+    </xacro:sonar_sensor>
 
   </xacro:macro>
 
