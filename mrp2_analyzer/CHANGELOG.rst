@@ -2,8 +2,8 @@
 Changelog for package mrp2_analyzer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.2.2 (2016-03-10)
+------------------
 * Updated package informations
 * Contributors: Akif
 

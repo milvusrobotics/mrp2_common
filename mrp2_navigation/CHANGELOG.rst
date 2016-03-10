@@ -2,8 +2,8 @@
 Changelog for package mrp2_navigation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.2.2 (2016-03-10)
+------------------
 * Updated package informations
 * Updated parameters
 * Configuration files seperated for amcl and gmapping. Fixed params. Updated maps.
