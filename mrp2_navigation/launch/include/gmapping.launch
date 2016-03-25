@@ -9,8 +9,8 @@
 
         <param name="throttle_scans" value="1"/>
         <param name="map_update_interval" value="2.0"/>
-
-        <param name="maxUrange" value="28.0"/>
+        
+        <param name="maxUrange" value="25.0"/>
         <param name="maxRange" value="30.0"/>
 
         <param name="sigma" value="0.05"/>
@@ -24,14 +24,14 @@
         <param name="minimumScore" value="0"/>
 
         <param name="srr" value="0.1"/>
-        <param name="srt" value="0.1"/>
+        <param name="srt" value="0.2"/>
         <param name="str" value="0.1"/>
         <param name="stt" value="0.1"/>
 
-        <param name="linearUpdate" value="0.5"/>
-        <param name="angularUpdate" value="0.1"/>
-        <param name="temporalUpdate" value="2.0"/>
-        <param name="resampleThreshold" value="0.4"/>
+        <param name="linearUpdate" value="1.0"/>
+        <param name="angularUpdate" value="0.5"/>
+        <param name="temporalUpdate" value="-1.0"/>
+        <param name="resampleThreshold" value="0.5"/>
 
         <param name="particles" value="30"/>
 
@@ -46,7 +46,7 @@
         <param name="lasamplerange" value="0.005"/>
         <param name="lasamplestep" value="0.005"/>
 
-        <param name="occ_thresh" value="0.4"/>
+        <param name="occ_thresh" value="0.25"/>
         <param name="transform_publish_period" value="0.05"/>
     </node>
 

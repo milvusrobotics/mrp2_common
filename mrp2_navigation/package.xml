@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <package>
   <name>mrp2_navigation</name>
-  <version>0.2.2</version>
+  <version>0.2.0</version>
   <description>Launch files, parameters and maps for different navigation applications.</description>
   <maintainer email="akifhno@gmail.com">Akif Hacinecipoglu</maintainer>
   <license>BSD</license>
 
   <author email="akifhno@gmail.com">Akif Hacinecipoglu</author>
-  <url type="website">http://wiki.ros.org/mrp2_navigation</url>
+  <url type="website">http://wiki.ros.org/Robots/MRP2</url>
 
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>amcl</build_depend>
@@ -16,7 +16,6 @@
   <build_depend>move_base</build_depend>
   <build_depend>urdf</build_depend>
   <build_depend>xacro</build_depend>
-  
   <run_depend>amcl</run_depend>
   <run_depend>gmapping</run_depend>
   <run_depend>map_server</run_depend>

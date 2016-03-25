@@ -1,14 +1,13 @@
 <launch>
 
   <!-- Run the map server -->
- <arg name="map_file" default="milvus_office.yaml"/>
- <arg name="map_path" default ="$(find mrp2_navigation)/maps/"/>
- <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_path)$(arg map_file)" />
+ <arg name="map_file" default="$(find mrp2_navigation)/maps/milvus_office.yaml"/>
+ <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
 
   <!--- Run AMCL -->
  <include file="$(find mrp2_navigation)/launch/include/amcl.launch" />
 
   <!--- Run Move Base -->
- <include file="$(find mrp2_navigation)/launch/include/move_base_amcl.launch" />
+ <include file="$(find mrp2_navigation)/launch/include/move_base.launch" />
 
 </launch>
