@@ -3,7 +3,7 @@ TrajectoryPlannerROS:
     # Robot Configuration Parameters
     acc_lim_x: 10.0
     acc_lim_y: 0.0
-    acc_lim_theta: 20.0
+    acc_lim_theta: 10.0
 
     max_vel_x: 0.5
     min_vel_x: 0.02
@@ -11,10 +11,10 @@ TrajectoryPlannerROS:
     max_vel_y: 0.0
     min_vel_y: 0.0
 
-    max_vel_theta: 2.0
-    min_vel_theta: -2.0
-    max_rotational_vel: 2.0
-    min_in_place_vel_theta: 0.04
+    max_vel_theta: 0.5
+    min_vel_theta: -0.5
+    max_rotational_vel: 1.0
+    min_in_place_vel_theta: 0.02
 
     escape_vel: -0.1
     holonomic_robot: false
@@ -25,14 +25,14 @@ TrajectoryPlannerROS:
     latch_xy_goal_tolerance: true
 
     # Forward Simulation Parameters
-    sim_time: 1.7
+    sim_time: 1.0
     sim_granularity: 0.025
     angular_sim_granularity: 0.05
     vx_samples: 5
     vtheta_samples: 20
     controller_frequency: 10
 
-    # Trajectory Scoring Parameters    
+    # Trajectory Scoring Parameters
     meter_scoring: true # Whether the gdist_scale and pdist_scale parameters should assume that goal_distance and path_distance are expressed in units of meters or cells. Cells are assumed by default (false).
     occdist_scale:  0.01 #The weighting for how much the controller should attempt to avoid obstacles. default 0.01
     pdist_scale: 1.25  #     The weighting for how much the controller should stay close to the path it was given . default 0.6

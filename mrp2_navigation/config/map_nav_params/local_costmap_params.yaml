@@ -1,4 +1,5 @@
 local_costmap:
+   transform_tolerance: 0.3
    global_frame: map
    robot_base_frame: base_footprint
    update_frequency: 10.0
