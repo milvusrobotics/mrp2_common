@@ -8,7 +8,19 @@ raytrace_range: 10.0
 #footprint: [[0.1995, -0.2635], [0.2605, -0.2275], [0.2965, -0.1735], [0.3145, -0.0515], [0.3145, 0.0515], [0.2965, 0.1735], [0.2605, 0.2275], [0.1995, 0.2635], [-0.1995, 0.2635], [-0.2605, 0.2275], [-0.2965, 0.1735], [-0.3145, 0.0515], [-0.3145, -0.0515], [-0.2965, -0.1735], [-0.2605, -0.2275], [-0.1995, -0.2635]]
 #inflation_radius: 0.3
 footprint: [[-0.315, -0.14], [-0.315, 0.14], [-0.22, 0.265], [0.22, 0.265], [0.315, 0.14], [0.315, -0.14], [0.22, -0.265], [-0.22, -0.265]]
-observation_sources: scan
 
-scan: {sensor_frame: /base_laser_link, data_type: LaserScan, topic: scan, marking: true, clearing: true}
+plugins:
+- {name: static_layer, type: "costmap_2d::StaticLayer"}
+- {name: obstacles_layer, type: "costmap_2d::ObstacleLayer"}
+- {name: inflater_layer, type: "costmap_2d::InflationLayer"}
+#- {name: sonar_layer, type: "range_sensor_layer::RangeSensorLayer"}
 
+obstacles_layer:
+  observation_sources: scan 
+  scan: {sensor_frame: /base_laser_link, data_type: LaserScan, topic: scan, marking: true, clearing: true}
+  
+#sonar_layer:
+#  topics: ["/sonar_1","/sonar_2","/sonar_3","/sonar_4","/sonar_5","/sonar_6","/sonar_7"]
+#  clear_on_max_reading: true
+#  no_readings_timeout: 1.0
+  
