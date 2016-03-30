@@ -5,6 +5,7 @@
 
   <node pkg="amcl" type="amcl" name="amcl">
     <param name="use_map_topic" value="$(arg use_map_topic)"/>
+<<<<<<< HEAD
     <!-- Publish scans from best pose at a max of 10 Hz -->
     <param name="gui_publish_rate" value="-1.0"/>
     <param name="laser_max_beams" value="100"/>
@@ -12,6 +13,17 @@
     <param name="laser_max_range" value="-1.0"/>
     <param name="min_particles" value="100"/>
     <param name="max_particles" value="2000"/>
+=======
+    <!-- Publish scans from best pose at a max of 5 Hz -->
+    <param name="odom_model_type" value="diff-corrected"/>
+    <!--param name="odom_alpha5" value="0.1"/-->
+    <param name="gui_publish_rate" value="5.0"/>
+    <param name="laser_max_beams" value="100"/>
+    <param name="laser_min_range" value="-1.0"/>
+    <param name="laser_max_range" value="-1.0"/>
+    <param name="min_particles" value="500"/>
+    <param name="max_particles" value="1000"/>
+>>>>>>> aafa4458de2eefb216e61a207784001db52db09e
     <!-- Maximum error between the true distribution and the estimated distribution. -->
     <param name="kld_err" value="0.05"/>
     <param name="kld_z" value="0.99"/>

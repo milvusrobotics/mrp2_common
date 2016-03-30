@@ -13,7 +13,21 @@ plugins:
 - {name: static_layer, type: "costmap_2d::StaticLayer"}
 - {name: obstacles_layer, type: "costmap_2d::ObstacleLayer"}
 - {name: inflater_layer, type: "costmap_2d::InflationLayer"}
+<<<<<<< HEAD
 
 obstacles_layer:
    observation_sources: scan
    scan: {sensor_frame: /base_laser_link, data_type: LaserScan, topic: scan, marking: true, clearing: true}
+=======
+#- {name: sonar_layer, type: "range_sensor_layer::RangeSensorLayer"}
+
+obstacles_layer:
+  observation_sources: scan 
+  scan: {sensor_frame: /base_laser_link, data_type: LaserScan, topic: scan, marking: true, clearing: true}
+  
+#sonar_layer:
+#  topics: ["/sonar_1","/sonar_2","/sonar_3","/sonar_4","/sonar_5","/sonar_6","/sonar_7"]
+#  clear_on_max_reading: true
+#  no_readings_timeout: 1.0
+  
+>>>>>>> aafa4458de2eefb216e61a207784001db52db09e
