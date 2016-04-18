@@ -7,7 +7,7 @@ mobile_base_controller:
   twist_covariance_diagonal: [0.001, 0.001, 1.0e-3, 1.0e-3, 1.0e-3, 0.01]
 
   wheel_separation_multiplier: 1.000
-  wheel_radius_multiplier    : 1.000
+  wheel_radius_multiplier    : 0.97
 
   velocity_rolling_window_size: 2
 
@@ -62,10 +62,10 @@ mrp2_joint_publisher:
 
 ekf_localization:
   frequency: 50
-  sensor_timeout: .05
+  sensor_timeout: .1
   transform_time_offset: 0.0
 
-  odom0: /mobile_base_controller/odom
+  odom0: /mobile_base_controller/odom2
   odom0_config: [false, false, false,
                  false, false, false,
                  true, false, false,

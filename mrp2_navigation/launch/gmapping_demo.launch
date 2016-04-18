@@ -3,7 +3,6 @@
 <launch>
 
   <include file="$(find mrp2_navigation)/launch/include/gmapping.launch"/>
-
   <include file="$(find mrp2_navigation)/launch/include/move_base.launch"/>
 
 </launch>
