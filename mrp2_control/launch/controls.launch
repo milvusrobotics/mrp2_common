@@ -5,4 +5,6 @@
         args="mrp2_joint_publisher mobile_base_controller --shutdown-timeout 1" />
 
   <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization" />
+  <node pkg="motion_controller" type="odometry_publisher_node" name="odometry_publisher_node" />
+
 </launch>
