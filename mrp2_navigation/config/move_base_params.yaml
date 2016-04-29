@@ -17,8 +17,6 @@ conservative_reset_dist: 1.0
 recovery_behaviors:
   - name: 'conservative_reset'
     type: 'clear_costmap_recovery/ClearCostmapRecovery'
-  - name: 'rotate_recovery'
-    type: 'clear_costmap_recovery/RotateRecovery'
   - name: 'aggressive_reset'
     type: 'clear_costmap_recovery/ClearCostmapRecovery'
 
