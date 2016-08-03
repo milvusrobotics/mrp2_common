@@ -14,7 +14,7 @@
   <!-- Wheel characteristics -->
   <property name="wheel_radius"     value="0.100"/>
   <property name="wheel_width"      value="0.050"/>
-  <property name="wheel_separation" value="0.478"/>
+  <property name="wheel_separation" value="0.4715"/>
   <property name="wheel_torque"     value="5.0"/>
   <property name="wheel_velocity"   value="2.0"/>
 
@@ -22,8 +22,8 @@
   <!-- Caster wheel characteristics -->
   <property name="caster_radius"       value="0.0375"/>
   <property name="caster_width"        value="0.020"/>
-  <property name="caster_separation_x" value="0.426"/>
-  <property name="caster_separation_y" value="0.282"/>
+  <property name="caster_separation_x" value="0.384"/>
+  <property name="caster_separation_y" value="0.288"/>
   <property name="caster_offset_x"     value="-0.002"/>
   <property name="caster_offset_y"     value="0.0"/>
   <property name="caster_offset_z"     value="0.075"/>
@@ -31,7 +31,7 @@
   <!-- Laser characteristics -->
   <property name="base_laser_x" value="0.239"/>
   <property name="base_laser_y" value="0.0"/>
-  <property name="base_laser_z" value="0.2581"/>
+  <property name="base_laser_z" value="0.2660"/>
 
   <xacro:macro name="base" params="name">
 
@@ -85,7 +85,7 @@
 
     <!-- IMU -->
     <xacro:imu_sensor name="${name}_imu" parent="${name}_link" update_rate="50.0">
-      <origin xyz="0.200 0 0.200" rpy="0 ${0 * deg_to_rad} ${0 * deg_to_rad}"/>
+      <origin xyz="0.1604 0 0.2440" rpy="0 ${0 * deg_to_rad} ${0 * deg_to_rad}"/>
     </xacro:imu_sensor>
 
     <!-- Wheels -->
@@ -95,10 +95,10 @@
 
     <!-- Casters wheels -->
 
-    <xacro:caster side="front_left" radius="${caster_radius}" width="${caster_width}" position_x="0.213" position_y="0.141" position_z="0.0971" offset_x="-0.030" offset_y="0" offset_z="-0.0596" parent="${name}"/>
-    <xacro:caster side="front_right" radius="${caster_radius}" width="${caster_width}" position_x="0.213" position_y="-0.141" position_z="0.0971" offset_x="-0.030" offset_y="0" offset_z="-0.0596" parent="${name}"/>
-    <xacro:caster side="back_left" radius="${caster_radius}" width="${caster_width}" position_x="-0.213" position_y="0.141" position_z="0.0971" offset_x="-0.030" offset_y="0" offset_z="-0.0596" parent="${name}"/>
-    <xacro:caster side="back_right" radius="${caster_radius}" width="${caster_width}" position_x="-0.213" position_y="-0.141" position_z="0.0971" offset_x="-0.030" offset_y="0" offset_z="-0.0596" parent="${name}"/>
+    <xacro:caster side="front_left" radius="${caster_radius}" width="${caster_width}" position_x="0.192" position_y="0.144" position_z="0.0971" offset_x="-0.030" offset_y="0" offset_z="-0.0596" parent="${name}"/>
+    <xacro:caster side="front_right" radius="${caster_radius}" width="${caster_width}" position_x="0.192" position_y="-0.144" position_z="0.0971" offset_x="-0.030" offset_y="0" offset_z="-0.0596" parent="${name}"/>
+    <xacro:caster side="back_left" radius="${caster_radius}" width="${caster_width}" position_x="-0.192" position_y="0.144" position_z="0.0971" offset_x="-0.030" offset_y="0" offset_z="-0.0596" parent="${name}"/>
+    <xacro:caster side="back_right" radius="${caster_radius}" width="${caster_width}" position_x="-0.192" position_y="-0.144" position_z="0.0971" offset_x="-0.030" offset_y="0" offset_z="-0.0596" parent="${name}"/>
 
     <!-- Sonar sensors -->
     <xacro:sonar_sensor name="${name}_sonar_1" parent="${name}" ros_topic="sonar_1" update_rate="20" maxRange="4.0" minRange="0.01" fov="${35 * deg_to_rad}" radiation="ultrasound">
