@@ -17,7 +17,7 @@ mobile_base_controller:
   error_constant_left : 0.0
   error_constant_right: 0.0
 
-  enable_odom_tf: false
+  enable_odom_tf: true
 
   # Velocity commands timeout [s]
   cmd_vel_timeout: 0.5
