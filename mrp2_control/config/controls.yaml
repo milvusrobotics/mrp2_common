@@ -17,7 +17,7 @@ mobile_base_controller:
   error_constant_left : 0.0
   error_constant_right: 0.0
 
-  enable_odom_tf: true
+  enable_odom_tf: false
 
   # Velocity commands timeout [s]
   cmd_vel_timeout: 0.5
@@ -61,12 +61,12 @@ mrp2_joint_publisher:
   publish_rate: 50
 
 ekf_localization:
-  frequency: 50
+  frequency: 30
   sensor_timeout: .05
   transform_time_offset: 0.0
 
   odom0: /mobile_base_controller/odom
-  odom0_config: [false, false, false,
+  odom0_config: [true, true, true,
                  false, false, false,
                  true, false, false,
                  false, false, true,
