@@ -2,6 +2,13 @@
 Changelog for package mrp2_navigation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Enabled robot_localization
+* Updated navigation
+* Updated nav params & files
+* Contributors: Akif
+
 0.2.2 (2016-03-10)
 ------------------
 * Updated package informations
