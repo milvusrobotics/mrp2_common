@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>mrp2_analyzer</name>
-  <version>0.2.2</version>
+  <version>0.2.3</version>
   <description>The diagnostic package for MRP2.</description>
   <maintainer email="akifhno@gmail.com">Akif Hacinecipoglu</maintainer>
   <license>BSD</license>

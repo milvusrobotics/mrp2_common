@@ -2,8 +2,8 @@
 Changelog for package mrp2_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.2.3 (2016-08-16)
+------------------
 * Updated description sizes
 * Contributors: Akif
 
