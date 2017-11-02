@@ -3,9 +3,8 @@
 using namespace diagnostic_aggregator;
 using namespace std;
 
-PLUGINLIB_REGISTER_CLASS(MRP2Analyzer,  
-                         diagnostic_aggregator::MRP2Analyzer, 
-                         diagnostic_aggregator::Analyzer)
+PLUGINLIB_EXPORT_CLASS(diagnostic_aggregator::MRP2Analyzer,
+                       diagnostic_aggregator::Analyzer)
 
 MRP2Analyzer::MRP2Analyzer() :
   l_motor_path_(""), r_motor_path_(""), battery_path_(""), lights_path_(""), power_board_name_(""), 
