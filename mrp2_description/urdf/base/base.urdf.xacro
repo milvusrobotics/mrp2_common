@@ -12,26 +12,26 @@
   <xacro:include filename="$(find mrp2_description)/urdf/sensors/sonar.urdf.xacro"/>
 
   <!-- Wheel characteristics -->
-  <property name="wheel_radius"     value="0.100"/>
-  <property name="wheel_width"      value="0.050"/>
-  <property name="wheel_separation" value="0.4715"/>
-  <property name="wheel_torque"     value="5.0"/>
-  <property name="wheel_velocity"   value="2.0"/>
+  <xacro:property name="wheel_radius"     value="0.100"/>
+  <xacro:property name="wheel_width"      value="0.050"/>
+  <xacro:property name="wheel_separation" value="0.4715"/>
+  <xacro:property name="wheel_torque"     value="5.0"/>
+  <xacro:property name="wheel_velocity"   value="2.0"/>
 
 
   <!-- Caster wheel characteristics -->
-  <property name="caster_radius"       value="0.0375"/>
-  <property name="caster_width"        value="0.020"/>
-  <property name="caster_separation_x" value="0.384"/>
-  <property name="caster_separation_y" value="0.288"/>
-  <property name="caster_offset_x"     value="-0.002"/>
-  <property name="caster_offset_y"     value="0.0"/>
-  <property name="caster_offset_z"     value="0.075"/>
+  <xacro:property name="caster_radius"       value="0.0375"/>
+  <xacro:property name="caster_width"        value="0.020"/>
+  <xacro:property name="caster_separation_x" value="0.384"/>
+  <xacro:property name="caster_separation_y" value="0.288"/>
+  <xacro:property name="caster_offset_x"     value="-0.002"/>
+  <xacro:property name="caster_offset_y"     value="0.0"/>
+  <xacro:property name="caster_offset_z"     value="0.075"/>
 
   <!-- Laser characteristics -->
-  <property name="base_laser_x" value="0.239"/>
-  <property name="base_laser_y" value="0.0"/>
-  <property name="base_laser_z" value="0.2660"/>
+  <xacro:property name="base_laser_x" value="0.239"/>
+  <xacro:property name="base_laser_y" value="0.0"/>
+  <xacro:property name="base_laser_z" value="0.2660"/>
 
   <xacro:macro name="base" params="name">
 
@@ -90,8 +90,25 @@
 
     <!-- Wheels -->
 
-    <xacro:wheel_right side="right" reflect="-1.0" radius="${wheel_radius}" width="${wheel_width}" torque="${wheel_torque}" velocity="${wheel_velocity}" separation="${wheel_separation}" parent="${name}"/>
-    <xacro:wheel_left side="left"  reflect="1.0" radius="${wheel_radius}" width="${wheel_width}" torque="${wheel_torque}" velocity="${wheel_velocity}" separation="${wheel_separation}" parent="${name}"/>
+    <xacro:wheel_right 
+      side="right" 
+      reflect="-1.0" 
+      radius="${wheel_radius}" 
+      width="${wheel_width}" 
+      torque="${wheel_torque}" 
+      velocity="${wheel_velocity}"  
+      separation="${wheel_separation}" 
+      parent="${name}"/>
+    <xacro:wheel_left 
+      side="left"  
+      reflect="1.0" 
+      radius="${wheel_radius}" 
+      width="${wheel_width}" 
+      torque="${wheel_torque}" 
+      velocity="${wheel_velocity}" 
+      separation="${wheel_separation}" 
+      parent="${name}"/>
+
 
     <!-- Casters wheels -->
 

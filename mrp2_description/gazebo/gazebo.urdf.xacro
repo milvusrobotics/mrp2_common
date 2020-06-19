@@ -1,13 +1,15 @@
 <?xml version="1.0"?>
 
-<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"
+       xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
   <gazebo>
+
     <plugin filename="libgazebo_ros_control.so" name="ros_control">
-      <ns></ns>
-      <robotSimType>mrp2_hardware_gazebo/Mrp2HardwareGazebo</robotSimType>
+      <!-- <robotNamespace></robotNamespace>
+           <robotSimType>mrp2_hardware_gazebo/Mrp2HardwareGazebo</robotSimType> -->
       <controlPeriod>0.001</controlPeriod>
     </plugin>
 
@@ -17,8 +19,28 @@
       <alwaysOn>true</alwaysOn>
       <updateRate>100.0</updateRate>
     </plugin>
+
+    <plugin filename="libgazebo_ros_diff_drive.so" name="differential_drive_controller">
+      <updateRate>180</updateRate>
+      <leftJoint>wheel_left_joint</leftJoint>
+      <rightJoint>wheel_right_joint</rightJoint>
+      <wheelSeparation>0.5380</wheelSeparation>
+      <wheelDiameter>0.2410</wheelDiameter>
+      <wheelAcceleration>1.0</wheelAcceleration>
+      <wheelTorque>20</wheelTorque>
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <robotBaseFrame>base_footprint</robotBaseFrame>
+      <odometrySource>1</odometrySource>
+      <publishWheelTF>true</publishWheelTF>
+      <publishOdom>true</publishOdom>
+      <publishWheelJointState>true</publishWheelJointState>
+      <legacyMode>false</legacyMode>
+    </plugin>
+
   </gazebo>
 
-  <property name="M_PI" value="3.14159" />
+  <xacro:property name="M_PI" value="3.14159" />
 
 </robot>
