@@ -4,15 +4,12 @@ This repository contains common ROS packages for MRP2 Robot. These packages are 
 
 ### 1. Active Packages ###
 
-* mrp2_analyzer
 * mrp2_common
 * mrp2_control
 * mrp2_description
 * mrp2_navigation
 
 ### 2. Information on Packages ###
-#### 2.1. mrp2_analyzer ####
-This package is used for diagnostic purposes. It makes use of [diagnostic_aggregator](http://wiki.ros.org/diagnostic_aggregator) and publishes states of right and left motors, battery and lights.
 
 #### 2.2. mrp2_common ####
 This is the metapackage only. No other applications.
