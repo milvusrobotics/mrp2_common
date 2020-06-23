@@ -7,12 +7,6 @@
 
   <gazebo>
 
-    <plugin filename="libgazebo_ros_control.so" name="ros_control">
-      <!-- <robotNamespace></robotNamespace>
-           <robotSimType>mrp2_hardware_gazebo/Mrp2HardwareGazebo</robotSimType> -->
-      <controlPeriod>0.001</controlPeriod>
-    </plugin>
-
     <plugin filename="libgazebo_ros_p3d.so" name="gazebo_ros_p3d">
       <bodyName>base_footprint</bodyName>
       <topicName>ground_truth_odom</topicName>

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(mrp2_control)
+project(mrp2_teleop)
 
 find_package(catkin REQUIRED COMPONENTS
   controller_manager

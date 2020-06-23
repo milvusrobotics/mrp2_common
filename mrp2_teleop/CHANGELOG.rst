@@ -1,5 +1,5 @@
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Changelog for package mrp2_control
+Changelog for package mrp2_teleop
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 0.2.3 (2016-08-16)

@@ -1,5 +1,5 @@
 <launch>
-  <rosparam command="load" file="$(find mrp2_control)/config/controls.yaml" />
+  <rosparam command="load" file="$(find mrp2_teleop)/config/controls.yaml" />
 
   <node name="controller_spawner" pkg="controller_manager" type="spawner"
         args="mrp2_joint_publisher mobile_base_controller --shutdown-timeout 1" />

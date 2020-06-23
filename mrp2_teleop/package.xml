@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <package>
-  <name>mrp2_control</name>
+  <name>mrp2_teleop</name>
   <version>0.2.3</version>
   <description>Teleoperation and ros controls related launch files and configurations.</description>
   <maintainer email="akifhno@gmail.com">Akif Hacinecipoglu</maintainer>
   <license>BSD</license>
 
   <author email="akifhno@gmail.com">Akif Hacinecipoglu</author>
-  <url type="website">http://wiki.ros.org/mrp2_control</url>
+  <url type="website">http://wiki.ros.org/mrp2_teleop</url>
 
   <buildtool_depend>catkin</buildtool_depend>
 
