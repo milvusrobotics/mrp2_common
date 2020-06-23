@@ -5,7 +5,7 @@
   <xacro:include filename="$(find mrp2_description)/urdf/wheels/wheel.transmission.xacro"/>
   <xacro:include filename="$(find mrp2_description)/urdf/wheels/wheel.gazebo.xacro"/>
 
-  <xacro:macro name="wheel_left" params="side reflect radius width torque velocity separation parent">
+  <xacro:macro name="wheel" params="side reflect radius width torque velocity separation parent">
     
     <link name="wheel_${side}_link">
       <inertial>
@@ -25,7 +25,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://mrp2_description/meshes/left_wheel.stl"/>
+          <mesh filename="package://mrp2_description/meshes/${side}_wheel.stl"/>
         </geometry>
         <material name="DarkGrey"/>
       </visual>
