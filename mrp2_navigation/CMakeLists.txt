@@ -13,3 +13,8 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package()
 
 include_directories(${catkin_INCLUDE_DIRS})
+
+foreach(dir config launch maps)
+    install(DIRECTORY ${dir}/
+        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/${dir})
+endforeach()
