@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+
+  <xacro:macro name="uv_tower" params="name parent">
+
+    <link name="${name}">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.22963000000"/>
+        <inertia ixx="0.00003393164" ixy="0.00000064943" ixz="0.00000000000"
+                 iyy="0.00001849658" iyz="0.00000000000"
+                 izz="0.00005027615"/>
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://mrp2_description/meshes/uv_tower.stl" scale="0.0005 0.0005 0.0005"/>
+        </geometry>
+        <material name="DarkGrey"/>
+      </visual>
+    </link>
+
+    <joint name="${name}_joint" type="fixed">
+      <axis xyz="0 1 0"/>
+      
+        <origin xyz="-0.075 0.075 0.30" rpy="1.570796327 0 0" />
+      <parent link="${parent}"/>
+      <child  link="${name}"/>
+    </joint>
+
+  </xacro:macro>
+
+</robot>
