@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package>
+  <name>mrp2_slam</name>
+  <version>0.2.3</version>
+  <description>Launch scripts for SLAM operations</description>
+  <license>BSD</license>
+  <author email="onrdemirezen@gmail.com">Onur Demirezen</author>
+  <maintainer email="akifhno@gmail.com">Akif Hacinecipoglu</maintainer>
+  
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>amcl</build_depend>
+  <build_depend>gmapping</build_depend>
+  <build_depend>map_server</build_depend>
+  <build_depend>move_base</build_depend>
+  <build_depend>urdf</build_depend>
+  <build_depend>xacro</build_depend>
+  <build_depend>tf</build_depend>
+  
+  <run_depend>amcl</run_depend>
+  <run_depend>gmapping</run_depend>
+  <run_depend>map_server</run_depend>
+  <run_depend>move_base</run_depend>
+  <run_depend>urdf</run_depend>
+  <run_depend>xacro</run_depend>
+  <build_depend>tf</build_depend>
+</package>

@@ -1,0 +1,19 @@
+<launch>
+  <arg name="slam_method" default="cartographer"/>
+  <arg name="configuration_basename" default="mrp2_lds_2d.lua"/>
+  <!--arg name="open_rviz" default="true"/-->
+
+  <!-- mrp2 -->
+  <include file="$(find mrp2_description)/launch/description.launch"/>
+
+  <!-- SLAM: Gmapping, Cartographer, Hector, Karto, Frontier_exploration, RTAB-Map -->
+  <include file="$(find mrp2_slam)/launch/mrp2_$(arg slam_method).launch">
+    <arg name="configuration_basename" value="$(arg configuration_basename)"/>
+  </include>
+
+  <!-- rviz >
+  <group if="$(arg open_rviz)"> 
+    <node pkg="rviz" type="rviz" name="rviz" required="true"
+          args="-d $(find turtlebot3_slam)/rviz/turtlebot3_$(arg slam_methods).rviz"/>
+  </group-->
+</launch>
