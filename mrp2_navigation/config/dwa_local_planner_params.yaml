@@ -30,7 +30,7 @@ DWAPlannerROS:
     angular_sim_granularity: 0.02
     vx_samples: 6
     vtheta_samples: 20
-    controller_frequency: 20
+    controller_frequency: 10
 
     # Trajectory Scoring Parameters
     meter_scoring: true 
