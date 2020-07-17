@@ -3,7 +3,7 @@
   <arg name="configuration_basename" default="mrp2_lds_2d.lua"/>
 
   <!-- move_base -->
-  <include file="$(find mrp2_navigation)/launch/move_base.launch"/>
+  <!-- include file="$(find mrp2_navigation)/launch/move_base.launch"/ -->
 
   <!-- cartographer_node -->
   <node pkg="cartographer_ros" type="cartographer_node" name="cartographer_node" 
