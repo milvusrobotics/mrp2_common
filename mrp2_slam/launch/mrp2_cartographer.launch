@@ -10,7 +10,7 @@
         args="-configuration_directory $(find mrp2_slam)/config
               -configuration_basename $(arg configuration_basename)"
         output="screen">
-    <remap from="/imu" to="/flat_imu"/>
+    <!--remap from="/imu" to="/flat_imu"/-->
     <!--remap from="points2" to="/camera/depth/points" / -->
   </node>
 

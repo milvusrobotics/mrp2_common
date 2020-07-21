@@ -20,7 +20,17 @@
       <sensor name="${name}_sensor" type="imu">
         <always_on>1</always_on>
         <update_rate>100.0</update_rate>
-        <imu>
+        <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+          <topicName>imu</topicName>
+          <bodyName>base_imu_link</bodyName>
+          <updateRateHZ>10.0</updateRateHZ>
+          <gaussianNoise>0.0</gaussianNoise>
+          <xyzOffset>0 0 0</xyzOffset>
+          <rpyOffset>0 0 0</rpyOffset>
+          <frameName>base_imu_link</frameName>
+          <initialOrientationAsReference>false</initialOrientationAsReference>
+        </plugin>
+        <!--imu>
           <noise>
             <type>gaussian</type>
             <rate>
@@ -36,7 +46,7 @@
               <bias_stddev>0.001</bias_stddev>
             </accel>
           </noise>
-        </imu>
+        </imu-->
       </sensor>
     </gazebo>
   </xacro:macro>
