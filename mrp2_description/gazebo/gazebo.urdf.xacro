@@ -11,11 +11,11 @@
       <bodyName>base_footprint</bodyName>
       <topicName>ground_truth_odom</topicName>
       <alwaysOn>true</alwaysOn>
-      <updateRate>100.0</updateRate>
+      <updateRate>20</updateRate>
     </plugin>
 
     <plugin filename="libgazebo_ros_diff_drive.so" name="differential_drive_controller">
-      <updateRate>180</updateRate>
+      <updateRate>20</updateRate>
       <leftJoint>wheel_left_joint</leftJoint>
       <rightJoint>wheel_right_joint</rightJoint>
       <wheelSeparation>0.5380</wheelSeparation>
