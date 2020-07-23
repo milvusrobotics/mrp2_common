@@ -2,12 +2,10 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:include filename="$(find mrp2_description)/urdf/deg_to_rad.xacro"/>
-  
+
   <xacro:include filename="$(find mrp2_description)/urdf/attachment/uv_tower.urdf.xacro"/>
 
   <xacro:include filename="$(find mrp2_description)/urdf/wheels/wheel.urdf.xacro"/>
-  <!--xacro:include filename="$(find mrp2_description)/urdf/wheels/wheel.right.urdf.xacro"/>
-  <xacro:include filename="$(find mrp2_description)/urdf/wheels/wheel.left.urdf.xacro"/-->
   <xacro:include filename="$(find mrp2_description)/urdf/wheels/75mm.caster.urdf.xacro"/>
 
   <xacro:include filename="$(find mrp2_description)/urdf/sensors/hokuyo_utm_30lx_laser.urdf.xacro"/>
@@ -86,32 +84,28 @@
     </xacro:hokuyo_utm_30lx_laser>
 
     <xacro:uv_tower name="${name}_uv_tower" parent="${name}_link" >
-     
+
     </xacro:uv_tower>
 
-
-   
-
-
     <!-- Wheels -->
-    <xacro:wheel 
-      side="right" 
-      reflect="-1.0" 
-      radius="${wheel_radius}" 
-      width="${wheel_width}" 
-      torque="${wheel_torque}" 
-      velocity="${wheel_velocity}"  
-      separation="-${wheel_separation}" 
-      parent="${name}"/>
-    <xacro:wheel 
-      side="left"  
-      reflect="1.0" 
-      radius="${wheel_radius}" 
-      width="${wheel_width}" 
-      torque="${wheel_torque}" 
-      velocity="${wheel_velocity}" 
-      separation="${wheel_separation}" 
-      parent="${name}"/>
+    <xacro:wheel
+      side="right"
+      reflect="-1.0"
+      radius="${wheel_radius}"
+      width="${wheel_width}"
+      torque="${wheel_torque}"
+      velocity="${wheel_velocity}"
+      separation="-${wheel_separation}"
+      parent="${name}_link"/>
+    <xacro:wheel
+      side="left"
+      reflect="1.0"
+      radius="${wheel_radius}"
+      width="${wheel_width}"
+      torque="${wheel_torque}"
+      velocity="${wheel_velocity}"
+      separation="${wheel_separation}"
+      parent="${name}_link"/>
 
 
     <!-- Casters wheels -->

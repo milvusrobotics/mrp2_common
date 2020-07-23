@@ -7,12 +7,12 @@
 
   <gazebo>
 
-    <!--plugin filename="libgazebo_ros_p3d.so" name="gazebo_ros_p3d">
+    <plugin filename="libgazebo_ros_p3d.so" name="gazebo_ros_p3d">
       <bodyName>base_footprint</bodyName>
       <topicName>ground_truth_odom</topicName>
       <alwaysOn>true</alwaysOn>
       <updateRate>20</updateRate>
-    </plugin-->
+    </plugin>
 
     <plugin filename="libgazebo_ros_diff_drive.so" name="differential_drive_controller">
       <updateRate>20</updateRate>
@@ -25,9 +25,9 @@
       <commandTopic>cmd_vel</commandTopic>
       <odometryTopic>odom</odometryTopic>
       <odometryFrame>odom</odometryFrame>
-      <robotBaseFrame>base_link</robotBaseFrame>
+      <robotBaseFrame>base_footprint</robotBaseFrame>
       <odometrySource>encoder</odometrySource>
-      <publishWheelTF>true</publishWheelTF>
+      <publishWheelTF>false</publishWheelTF>
       <publishOdom>true</publishOdom>
       <publishWheelJointState>true</publishWheelJointState>
       <legacyMode>false</legacyMode>

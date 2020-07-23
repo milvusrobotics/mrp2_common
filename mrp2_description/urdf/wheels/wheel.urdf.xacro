@@ -6,7 +6,7 @@
   <xacro:include filename="$(find mrp2_description)/urdf/wheels/wheel.gazebo.xacro"/>
 
   <xacro:macro name="wheel" params="side reflect radius width torque velocity separation parent">
-    
+
     <link name="wheel_${side}_link">
       <inertial>
       <origin
@@ -38,7 +38,7 @@
     </link>
 
     <joint name="wheel_${side}_joint" type="continuous">
-      <parent link="${parent}_link"/>
+      <parent link="${parent}"/>
       <child link="wheel_${side}_link"/>
       <origin xyz="0 ${separation / 2} ${radius}" rpy="0 0 0"/>
       <axis xyz="0 1 0"/>
