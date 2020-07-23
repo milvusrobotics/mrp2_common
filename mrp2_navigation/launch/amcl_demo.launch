@@ -9,6 +9,6 @@
  <include file="$(find mrp2_navigation)/launch/include/amcl.launch" />
 
   <!--- Run Move Base -->
- <include file="$(find mrp2_navigation)/launch/include/move_base.launch" />
+ <include file="$(find mrp2_navigation)/launch/move_base.launch" />
 
 </launch>
