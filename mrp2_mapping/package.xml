@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>mrp2_slam</name>
-  <version>0.2.3</version>
+  <version>1.0.0</version>
   <description>Launch scripts for mapping operations</description>
   <license>BSD</license>
   <author email="onrdemirezen@gmail.com">Onur Demirezen</author>

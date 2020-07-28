@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>mrp2_navigation</name>
-  <version>0.2.3</version>
+  <version>1.0.0</version>
   <description>Launch files, parameters and maps for different navigation applications.</description>
   <maintainer email="emircem.g@milvusrobotics.com">Emir Cem Gezer</maintainer>
   <license>BSD</license>

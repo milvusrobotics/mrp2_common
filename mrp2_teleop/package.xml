@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>mrp2_teleop</name>
-  <version>0.2.3</version>
+  <version>1.0.0</version>
   <description>Teleoperation and ros controls related launch files and configurations.</description>
   <maintainer email="emircem.g@milvusrobotics.com">Emir Cem Gezer</maintainer>
   <license>BSD</license>
