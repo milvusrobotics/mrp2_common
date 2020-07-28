@@ -3,8 +3,6 @@
 
   <xacro:include filename="$(find mrp2_description)/urdf/deg_to_rad.xacro"/>
 
-  <xacro:include filename="$(find mrp2_description)/urdf/attachment/uv_tower.urdf.xacro"/>
-
   <xacro:include filename="$(find mrp2_description)/urdf/wheels/wheel.urdf.xacro"/>
   <xacro:include filename="$(find mrp2_description)/urdf/wheels/75mm.caster.urdf.xacro"/>
 
@@ -83,9 +81,6 @@
       <origin xyz="${base_laser_x} ${base_laser_y} ${base_laser_z}" rpy="0 0 0" />
     </xacro:hokuyo_utm_30lx_laser>
 
-    <xacro:uv_tower name="${name}_uv_tower" parent="${name}_link" >
-
-    </xacro:uv_tower>
 
     <!-- Wheels -->
     <xacro:wheel
