@@ -2,10 +2,10 @@
 <package>
   <name>mrp2_slam</name>
   <version>0.2.3</version>
-  <description>Launch scripts for SLAM operations</description>
+  <description>Launch scripts for mapping operations</description>
   <license>BSD</license>
   <author email="onrdemirezen@gmail.com">Onur Demirezen</author>
-  <maintainer email="akifhno@gmail.com">Akif Hacinecipoglu</maintainer>
+  <maintainer email="emircem.g@milvusrobotics.com">Emir Cem Gezer</maintainer>
   
 
   <buildtool_depend>catkin</buildtool_depend>

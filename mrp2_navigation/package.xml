@@ -3,7 +3,7 @@
   <name>mrp2_navigation</name>
   <version>0.2.3</version>
   <description>Launch files, parameters and maps for different navigation applications.</description>
-  <maintainer email="akifhno@gmail.com">Akif Hacinecipoglu</maintainer>
+  <maintainer email="emircem.g@milvusrobotics.com">Emir Cem Gezer</maintainer>
   <license>BSD</license>
 
   <author email="akifhno@gmail.com">Akif Hacinecipoglu</author>

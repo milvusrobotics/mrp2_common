@@ -3,7 +3,7 @@
   <name>mrp2_description</name>
   <version>0.2.3</version>
   <description>URDF and xacro description files for MRP2.</description>
-  <maintainer email="akifhno@gmail.com">Akif Hacinecipoglu</maintainer>
+  <maintainer email="emircem.g@milvusrobotics.com">Emir Cem Gezer</maintainer>
   <license>BSD</license>
 
   <author email="akifhno@gmail.com">Akif Hacinecipoglu</author>
