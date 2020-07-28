@@ -22,3 +22,6 @@ This package has URDF and xacro files for description of MRP2. Gazebo uses this 
 
 #### 2.5. mrp2_navigation ####
 This package includes launch files, parameters and maps for different navigation applications.
+
+#### 2.6. mrp2_mapping ####
+This package includes launch and configuration files for cartographer.
