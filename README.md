@@ -8,6 +8,7 @@ This repository contains common ROS packages for MRP2 Robot. These packages are 
 * mrp2_teleop
 * mrp2_description
 * mrp2_navigation
+* mrp2_mapping
 
 ### 2. Information on Packages ###
 
