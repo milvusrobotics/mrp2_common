@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>mrp2_description</name>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <description>URDF and xacro description files for MRP2.</description>
   <maintainer email="emircem.g@milvusrobotics.com">Emir Cem Gezer</maintainer>
   <license>BSD</license>

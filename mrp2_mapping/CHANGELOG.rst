@@ -2,8 +2,8 @@
 Changelog for package mrp2_slam
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.1 (2020-09-21)
+------------------
 * version bump to 1.0.0
 * package maintainers updated
 * refactor: mrp2_slam --> mrp2_mapping
